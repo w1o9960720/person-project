@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj =
+        {
+            a: '6',
+            children: [
+                {
+                    c: '22',
+                    children: [
+                        {
+                            m: '25',
+                            children: [
+                                {
+                                    k: '78'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+
+        let arr = [1, [2], [5, 6], [12, [4512]]]
+        function deepclone(obj) {
+            const arropopbj = Array.isArray(obj) ? [] : {}
+            Object.keys(obj).forEach((item) => {
+                if (obj[item] !== null && typeof obj[item] === 'object') {
+                    arropopbj[item] = deepclone(obj[item])
+                } else {
+                    arropopbj[item] = obj[item]
+                }
+            })
+            return arropopbj
+        }
+        let arr0 = deepclone(obj)
+        console.log(arr0);
+
+
+
+    </script>
+</body>
+
+</html>

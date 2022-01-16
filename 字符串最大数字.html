@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = 'wafestyuogesrhtyijjjjjjugkijhgf'
+        function strnum(str) {
+            const obj = {}
+            for (const va of str) {
+                if (obj[va]) {
+                    obj[va]++
+                } else {
+                    obj[va] = 1
+                }
+            }
+            let max = 0
+            let maxitem = ''
+            Object.keys(obj).forEach((item, index) => {
+                if (obj[item] > max) {
+                    max = obj[item]
+                    maxitem = item
+                }
+            })
+            return {
+                [maxitem]: max
+            }
+        }
+        console.log(strnum(str));
+
+
+
+        // function querystring(str) {
+        //     const arr0 = Object.entries([...str].reduce((pre, item, index) => {
+        //         if (!pre[item]) {
+        //             pre[item] = 1
+        //         } else {
+        //             pre[item]++
+        //         }
+        //         return pre
+        //     }, {}))
+        //     let num = arr0.reduce((pre, item, index) => {
+        //         if (pre < item[1]) {
+        //             pre = item[1]
+        //         }
+        //         return pre
+        //     }, 0)
+        //     return arr0.find((item, indx) => {
+        //         return item[1] === num
+        //     })
+        // }
+
+    </script>
+</body>
+
+</html>

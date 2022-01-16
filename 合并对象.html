@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 合并对象 或者往对象身上加属性 （浅拷贝）  
+        // 返回值是 第一个参数  修改了原对象 不需用变量去接返回值 
+        const obj1 = {
+            a: '1',
+            n: '3',
+            j: '5t'
+        }
+        const obj8 = {
+            m: "45t",
+            o: "34"
+        }
+       Object.assign(obj1, obj8, { a: '45t', l: "4" })
+
+        console.log(obj1);
+    </script>
+</body>
+
+</html>

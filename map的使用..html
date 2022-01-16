@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 根据group 给每个对象相应的颜色值
+        const arr = [
+            { 'name': 'xiaoming01', group: 'FE' },
+            { 'name': 'xiaoming02', group: 'QA' },
+            { 'name': 'xiaoming03', group: 'RD' },
+            { 'name': 'xiaoming04', group: 'FE' },
+            { 'name': 'xiaoming05', group: 'RD' },
+            { 'name': 'xiaoming06', group: '' }
+        ]
+        const colors = [['QA', 'red'], ['FE', 'blue'], ['RD', 'green'], ['', 'white']]
+        const colorMap = new Map(colors);
+        arr.forEach(item => item.color = colorMap.get(item.group))
+        console.log(arr);
+
+      const br=  Array.from(colorMap)
+
+        console.log(br);
+    </script>
+</body>
+
+</html>

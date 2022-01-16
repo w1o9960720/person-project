@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="dianji">点击</button>
+    <script>
+        //防抖
+        function debounce(fn, delay, ...arg) {
+            let timer = null
+            return function (e) {
+                timer && clearTimeout(timer)
+                timer = setTimeout(() => {
+                    fn.call(this, ...arg)
+                }, delay)
+            }
+        }
+
+        let int = document.querySelector('.dianji')
+        int.onclick = debounce(a, 200, 123)
+        function a() {
+            console.log(1, ...arguments);
+        }
+        console.log(int);
+
+
+        //节流(时间戳写法)
+        function throttle(fn, delay, ...arg) {
+            let time = 0
+            return function (e) {
+                let nowtime = new Date()
+                if (nowtime - time > delay) {
+                    fn.call(this, e, ...arg)
+                    time = nowtime
+                }
+            }
+        }
+        //定时器写法 第二种
+        function throttle1(fn, delay,) {
+            let timer
+            return function (...arg) {
+                if (timer) return
+                timer = setTimeout(() => {
+                    fn.call(this, arg)
+                    timer = null
+                }, delay)
+            }
+        }
+
+        function sc(e) {
+            console.log(e);
+        }
+        window.addEventListener('resize', throttle1(sc, 2000))
+    </script>
+</body>
+
+</html>

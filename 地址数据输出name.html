@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //第九题
+        // 给出如下地址数据格式，实现getNameById,输入address和id，输出id对应的地址name
+        const address = [
+            {
+                id: 1,
+                name: '北京市',
+                children: [
+                    {
+
+                        id: 11,
+                        name: '海定区',
+                        children: [
+                            {
+
+                                id: 111,
+                                name: '中关村',
+                            }
+                        ]
+                    },
+                    {
+
+                        id: 12,
+                        name: '朝阳区',
+                    }
+                ]
+
+            },
+            {
+                id: 2,
+                name: '四川省',
+                children: [
+                    {
+
+                        id: 21,
+                        name: '成都市',
+                        children: [
+                            {
+
+                                id: 211,
+                                name: '金牛区',
+                                children: [
+                                    {
+
+                                        id: 2111,
+                                        name: '石羊街道',
+                                        children: [
+                                            {
+
+                                                id: 21111,
+                                                name: '石羊村',
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+
+                        id: 22,
+                        name: '朝阳区',
+                    }
+                ]
+
+
+
+            },
+            {
+                id: 3,
+                name: '云南省',
+                children: [
+                    {
+
+                        id: 31,
+                        name: '昆明市',
+                        children: [
+                            {
+
+                                id: 311,
+                                name: '官渡区',
+                            }
+                        ]
+                    },
+                    {
+
+                        id: 32,
+                        name: '昭通市',
+                        children: [
+                            {
+
+                                id: 321,
+                                name: '镇雄县',
+                                children: [
+                                    {
+
+                                        id: 3211,
+                                        name: '乌峰街道办',
+                                        children: [
+                                            {
+
+                                                id: 32111,
+                                                name: '油榨街社区',
+                                                children: [
+                                                    {
+
+                                                        id: 321111,
+                                                        name: '粮油巷',
+                                                    }
+                                                ]
+                                            }
+                                        ]
+
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+
+
+            }
+
+        ]
+        function getNameByTd(address, id) {
+            let result = ''
+            for (let i = 0; i < address.length; i++) {
+                if (address[i].id === id) {
+                    result = address[i].name
+                } else {
+                    if (address[i]?.children?.length > 0) {
+                        result = getNameByTd(address[i].children, id)
+                    }
+                }
+                if (result) {
+                    break
+                }
+            }
+            return result
+        }
+        console.log(getNameByTd(address, 1));
+    </script>
+</body>
+
+</html>

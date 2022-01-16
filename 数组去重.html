@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 第七题
+        let array = [1, 5, 2, 3, 2, 5, 4]
+        function unique(array) {
+            return array.filter((item, index) => {
+                return array.indexOf(item) === index
+            })
+        }
+        console.log(unique(array));
+        console.log(array.indexOf(2));
+
+        //第二种
+        function unique1(array) {
+            return Array.from(new Set(array))
+        }
+        let ar7 = unique1(array)
+        console.log(ar7);
+        //第三种
+        function unique2(array) {
+            for (let i = 0; i < array.length; i++) {
+                for (let j = i + 1; j < array.length; j++) {
+                    if (array[i] === array[j]) {
+                        array.splice(j, 1)
+                        j--
+                    }
+                }
+            }
+            return array
+        }
+        let ar7 = unique2(array)
+        console.log(ar7);
+
+    </script>
+</body>
+
+</html>

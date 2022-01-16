@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Promise.all的源码
+        function myPromiseall(arr) {
+            return new Promise((resolve, reject) => {
+                if (!Array.isArray(arr)) {
+                    return reject(new Error('请传入数组类型'))
+                }
+                let num = 0
+                let res = []
+                let len = arr.length
+                for (let i = 0; i < arr.length; i++) {
+                    let item = arr[i]
+                    Promise.resolve(item).then((value) => {
+                        num++
+                        res[i] = value
+                        if (num === len) {
+                            resolve(res)
+                        }
+                    }).catch((e) => Promise.reject(e))
+                }
+            })
+        }
+        let promise1 = new Promise((res, rej) => {
+            setTimeout(() => {
+                res('1')
+            }, 3000);
+        })
+        let promise2 = new Promise((res, rej) => {
+            setTimeout(() => {
+                res('2')
+            }, 2000);
+        })
+
+        let promise3 = new Promise((res, rej) => {
+            setTimeout(() => {
+                res('3')
+            }, 1000);
+        })
+        myPromiseall([promise1, promise2, promise3])
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((e) => { console.log(e); })
+    </script>
+</body>
+
+</html>

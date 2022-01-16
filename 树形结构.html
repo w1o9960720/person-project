@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //递归树行结构
+        let arr = [
+            {
+                id: 1,
+                pareid: 0,
+            },
+            {
+                id: 11,
+                pareid: 1,
+            },
+            {
+                id: 111,
+                pareid: 11,
+            },
+            {
+                id: 1111,
+                pareid: 111,
+            },
+            {
+                id: 111111,
+                pareid: 1111,
+            },
+
+        ]
+        // console.log(tree(0));
+        //第二种
+        function tree2(id5) {
+            let children = arr.filter((item, index) => item.pareid === id5)
+            for (const child of children) {
+                child.children = tree2(child.id)
+            }
+            return children
+        }
+        //第三种
+        function tree1(id5) {
+            let children = arr.filter(item => item.pareid === id5)
+            children.forEach(item => item.children = tree1(item.id))
+            return children
+
+        }
+        //第四种
+        function tree3(id5) {
+            return arr.filter((item, index) => {
+                if (item.pareid == id5) {
+                    item.children = tree3(item.id)
+                    return true
+                }
+            })
+        }
+        console.log(tree1(0));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //查询字符串
+        let str = 'https://wofang.com/siteMgr/api/businessCircle/v1.0/businessCircles?cityCode=460107&pageNum=1&pageSize=100&delFlag=0&siteId=5&t=1641368770747'
+        function queryeoobj(str) {
+            //第一种
+            return str.split('?')[1].split('&').map(item => ({ [item.split('=')[0]]: item.split('=')[1] }))
+            //第二种 
+            // const arr5 = str.split('?')[1].split('&')
+            // let obj = {}
+            // for (i = 0; i < arr5.length; i++) {
+            //     let item = arr5[i].split('=')
+            //     obj[item[0]] = item[1]
+            // }
+            // const arr8 = arr5.forEach((item, index) => {
+            //     let item1 = item.split('=')
+            //     obj[item1[0]] = item1[1]
+            // })
+            // return obj
+        }
+        let b = queryeoobj(str)
+        console.log(b);
+        //数组转对象 用map方法可以转 返回一个对象
+
+
+        const arr8 = [1, 5, 6, 4, 89, 9, 7, 5, 6]
+        let str1 = arr8.map(item => {
+            return `我是第${item}个数组成员`
+        })
+        console.log(str1);
+    </script>
+</body>
+
+</html>

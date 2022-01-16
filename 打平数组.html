@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        const arr = [1, [2, 3, 4], [5, [2, 6, [3, 6]]]]
+
+        function flat(arr) {
+            return arr.reduce((prev, cur) => prev.concat(Array.isArray(cur) ? flat(cur) : cur), [])
+        }
+
+
+
+
+        console.log(flat(arr));
+    </script>
+</body>
+
+</html>
